@@ -56,7 +56,7 @@ def main():
                   'DL026', 'DL027', 'DL028', 'DL029', 'DL030', 'DL031', 'DL032',
                   'DL033', 'DL034', 'DL035', 'DL036', 'DL037', 'DL038', 'GJ001',
                   'HR011', 'HR012', 'HR013', 'HR014', 'JH001', 'KA002', 'KA003',
-                  'KA004', 'KA005', 'KA006', 'KA007', 'KA008', 'KA009', 'KA010',
+                  'KA004', 'KA006', 'KA007', 'KA008', 'KA009',
                   'KA011', 'KL002', 'KL004', 'KL007', 'KL008', 'MH005', 'MH006',
                   'MH007', 'MH008', 'MH009', 'MH010', 'MH011', 'MH012', 'MH013',
                   'MH014', 'ML001', 'MP001', 'MZ001', 'OD001', 'OD002', 'PB001',
@@ -77,8 +77,6 @@ def main():
         if future_date < date.today():
             st.error("Read the instructions Carefully.")
         else:
-            print(len(station_id))
-            print(len(pollutant))
             for i in pollutant_select:
                 result = future_predict(station_id[station_select], pollutant[i], future_date)
                 st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],

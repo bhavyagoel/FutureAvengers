@@ -2,7 +2,6 @@ import json
 from datetime import date
 import zipfile
 import streamlit as st
-from fbprophet import Prophet
 from fbprophet.serialize import model_from_json
 
 
@@ -22,6 +21,8 @@ def future_predict(station, pollutant, fut_date):
     m = model_from_json(json.load(json_file))
     future = m.make_future_dataframe(periods=num_days, freq='D', include_history=True)
     forecast = m.predict(future)
+    archive.close()
+    json_file.close()
     return forecast.iloc[-1, -1]
 
 

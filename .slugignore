@@ -1,0 +1,6 @@
+*.iml
+*.ipynb
+model.py
+serialized_model.json
+/.idea
+/models

@@ -1,6 +1,6 @@
 import json
 from datetime import date
-
+import zipfile
 import streamlit as st
 from fbprophet import Prophet
 from fbprophet.serialize import model_from_json
@@ -14,10 +14,12 @@ def future_predict(station, pollutant, fut_date):
     cur_date = date.today()
     delta = fut_date - cur_date
     num_days = delta.days
+    archive = zipfile.ZipFile('models.zip', 'r')
     name = "models/" + str(pollutant) + "_" + str(station) + ".json"
-    with open(name, 'r') as fin:
-        m = model_from_json(json.load(fin))
-
+    json_file = archive.open(name)
+    # with open(name, 'r') as fin:
+    #     m = model_from_json(json.load(fin))
+    m = model_from_json(json.load(json_file))
     future = m.make_future_dataframe(periods=num_days, freq='D', include_history=True)
     forecast = m.predict(future)
     return forecast.iloc[-1, -1]
@@ -78,10 +80,13 @@ def main():
             st.error("Read the instructions Carefully.")
         else:
             for i in pollutant_select:
-                result = future_predict(station_id[station_select], pollutant[i], future_date)
-                st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
-                                                                                    station_id[station_select],
-                                                                                    future_date, result))
+                try:
+                    result = future_predict(station_id[station_select], pollutant[i], future_date)
+                    st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
+                                                                                     station_id[station_select],
+                                                                                     future_date, result))
+                except:
+                    st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
 
     if st.button("About"):
         st.text("Developed By Bhavya Goel")

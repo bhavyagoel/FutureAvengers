@@ -79,7 +79,7 @@ def main():
         else:
             for i in pollutant_select:
                 result = future_predict(station_id[station_select], pollutant[i], future_date)
-                st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
+                st.write("Predicted Value of {} at {} on date {} is : {.2f}".format(pollutant[i],
                                                                                  station_id[station_select],
                                                                                  future_date, result))
 

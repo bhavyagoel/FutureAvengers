@@ -3,6 +3,8 @@ from datetime import date
 import zipfile
 import streamlit as st
 from fbprophet.serialize import model_from_json
+# import warnings
+# warnings.simplefilter('ignore')
 
 
 def welcome():
@@ -27,6 +29,7 @@ def future_predict(station, pollutant, fut_date):
 
 
 def main():
+    st.beta_set_page_config("Avengers")
     st.title("@FutureAvengers")
 
     html_temp = """

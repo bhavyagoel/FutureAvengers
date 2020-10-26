@@ -1,6 +1,10 @@
 import json
 from datetime import date
-import zipfile
+import sys
+if sys.version_info >= (3, 8):
+    import zipfile
+else:
+    import zipfile38 as zipfile
 import streamlit as st
 from fbprophet.serialize import model_from_json
 # import warnings

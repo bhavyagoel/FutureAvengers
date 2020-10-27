@@ -88,13 +88,13 @@ def main():
             st.error("Read the instructions Carefully.")
         else:
             for i in pollutant_select:
-                try:
-                    result = future_predict(station_id[station_select], pollutant[i], future_date)
-                    st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
-                                                                                     station_id[station_select],
-                                                                                     future_date, result))
-                except:
-                    st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
+            	
+            	result = future_predict(station_id[station_select], pollutant[i], future_date)
+            	st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
+                                                                             station_id[station_select],
+                                                                             future_date, result))
+                # except:
+                    # st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
 
     if st.button("About"):
         st.text("Developed By Bhavya Goel")

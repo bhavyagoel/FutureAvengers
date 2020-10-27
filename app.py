@@ -6,6 +6,7 @@ if sys.version_info >= (3, 8):
 else:
     import zipfile38 as zipfile
 import streamlit as st
+import os
 from fbprophet.serialize import model_from_json
 # import warnings
 # warnings.simplefilter('ignore')
@@ -87,8 +88,10 @@ def main():
         if future_date < date.today():
             st.error("Read the instructions Carefully.")
         else:
+        
             for i in pollutant_select:
-            	
+      		st.write(os.listdir())
+            	st.write(os.getcwd())
             	result = future_predict(station_id[station_select], pollutant[i], future_date)
             	st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
                                                                              station_id[station_select],

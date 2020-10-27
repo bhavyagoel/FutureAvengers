@@ -37,7 +37,7 @@ def future_predict(station, pollutant, fut_date):
 
 
 def main():
-    st.beta_set_page_config("Avengers")
+    # st.beta_set_page_config("Avengers")
     st.title("@FutureAvengers")
 
     html_temp = """

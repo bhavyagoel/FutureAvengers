@@ -1,6 +1,7 @@
 import json
 from datetime import date
 import sys
+
 if sys.version_info >= (3, 8):
     import zipfile
 else:
@@ -8,6 +9,8 @@ else:
 import streamlit as st
 import os
 from fbprophet.serialize import model_from_json
+
+
 # import warnings
 # warnings.simplefilter('ignore')
 
@@ -88,22 +91,22 @@ def main():
         if future_date < date.today():
             st.error("Read the instructions Carefully.")
         else:
-        
+
             for i in pollutant_select:
-      		st.write(os.listdir())
-            	st.write(os.getcwd())
-            	result = future_predict(station_id[station_select], pollutant[i], future_date)
-            	st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
-                                                                             station_id[station_select],
-                                                                             future_date, result))
-                # except:
-                    # st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
+                st.write(os.listdir())
+                st.write(os.getcwd())
+                result = future_predict(station_id[station_select], pollutant[i], future_date)
+                st.write("Predicted Value of {} at {} on date {} is : {}".format(pollutant[i],
+                                                                                 station_id[station_select],
+                                                                                 future_date, result))
+            # except:
+            # st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
 
-    if st.button("About"):
-        st.text("Developed By Bhavya Goel")
-        st.text("Team Fourth Dimension")
-        st.text("Future Update will make it realtime")
 
+if st.button("About"):
+    st.text("Developed By Bhavya Goel")
+    st.text("Team Fourth Dimension")
+    st.text("Future Update will make it realtime")
 
 if __name__ == '__main__':
     main()

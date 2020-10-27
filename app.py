@@ -23,7 +23,7 @@ def future_predict(station, pollutant, fut_date):
     cur_date = date.today()
     delta = fut_date - cur_date
     num_days = delta.days
-    archive = zipfile.ZipFile('models.zip', 'r')
+    archive = zipfile.ZipFile("./app/models.zip", 'r')
     name = "models/" + str(pollutant) + "_" + str(station) + ".json"
     json_file = archive.open(name)
     # with open(name, 'r') as fin:

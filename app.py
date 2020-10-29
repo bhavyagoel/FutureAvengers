@@ -37,7 +37,7 @@ def future_predict(station, pollutant, fut_date):
 
 
 def main():
-    # st.beta_set_page_config("Avengers")
+    st.beta_set_page_config("Avengers")
     st.title("@FutureAvengers")
 
     html_temp = """
@@ -58,7 +58,7 @@ def main():
     * Select the various Environmental Parameters on which you want to see pollutants impact.
     * It is assumed that the last date of any record in the dataset is today's date.
     ### Its an ongoing project ....
-    * Currenty the app is working for UP012 region for PM2.5 pollutant.
+    * Currently the app is working for UP012 region for PM2.5 pollutant.
     """)
 
     future_date = st.date_input("Date")
@@ -102,11 +102,11 @@ def main():
             # except:
             # st.error("Record for {} at {} not found.".format(pollutant[i], station_id[station_select]))
 
+    if st.button("About"):
+        st.text("Developed By Bhavya Goel")
+        st.text("Team Fourth Dimension")
+        st.text("Future Update will make it realtime")
 
-if st.button("About"):
-    st.text("Developed By Bhavya Goel")
-    st.text("Team Fourth Dimension")
-    st.text("Future Update will make it realtime")
 
 if __name__ == '__main__':
     main()
